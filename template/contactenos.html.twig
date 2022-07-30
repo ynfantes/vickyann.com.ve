@@ -1,0 +1,180 @@
+{% extends 'layout/base.html.twig'%}
+{% block contenido %}
+<div class="page-title-container">
+<div class="container">
+<div class="col-md-12">
+<p class="page-title animated bounceInDown">Contáctenos</p>
+</div>
+</div>
+</div>
+<section id="content">  
+
+<div class="container">
+
+<div class="row">  
+
+<div class="section-title wow animated fadeIn">
+<h1>Contáctenos</h1>
+<h2>Su requerimiento es importante para nosotros.</h2>
+</div>
+
+</div><!-- /row -->    
+
+<div class="row">  
+
+<div class="col-sm-6">          
+
+    <div class="col-sm-4 col-xs-6 text-left">
+      <strong>Dirección</strong>
+    </div>
+    <div class="col-sm-8 col-xs-6">
+      <address>
+        Av. La Estancia<br>
+        Edif. General B-1, Ofc. C<br>
+        Chuao - Caracas<br>
+      </address>
+    </div>
+    <div class="col-sm-4 col-xs-6 text-left">
+      <strong>Números Telefónicos:</strong>
+    </div>
+    <div class="col-sm-8 col-xs-6">
+      <address>
+        (0212)316 5294<br>
+      </address>
+    </div>
+    <div class="col-sm-4 col-xs-6 text-left">
+        <strong>&nbsp;</strong>
+    </div>
+    <div class="col-sm-8 col-xs-6">
+      <address>
+        (0212)312 5351<br>
+        (0212)830 3937<br>
+        (0212)992 2422
+      </address>
+
+    </div>
+    <p>Estamos para brindale el servicio de administración de condominios que usted está buscando.</p>
+</div>
+<div id="note" class="col-sm-5 pull-right"></div><!-- End notification -->    
+<div class="col-sm-6">
+  <!--////////// CONTACT FORM STARTS HERE ///////////-->
+  <div class="contact-form">
+
+    <form id="ajax-contact-form" class="form-horizontal" action="">
+        
+        <div class="row">  
+       <div class="col-sm-3">&nbsp;</div>
+          <div class="col-sm-9">
+            <div id="form-messages" class="text-center"></div>
+          </div>
+        </div>
+      <div class="group">
+        <div class="form-group">
+          <label for="name" class="col-sm-3 control-label">Nombre</label>
+          <div class="col-sm-9">
+            <input class="form-control" id="nombre" name="nombre" placeholder="Su Nombre y Apellido" type="text">
+          </div>
+        </div><!-- end form-group -->
+      </div><!-- /group -->
+
+      <div class="group">
+        <div class="form-group">
+          <label for="name" class="col-sm-3 control-label">E-mail</label>
+          <div class="col-sm-9">
+            <input class="form-control" id="email" name="email" placeholder="Ingrese su correo electrónico" type="text">
+          </div>
+        </div><!-- end form-group -->
+      </div><!-- /row -->
+
+      <div class="group">
+        <div class="form-group textarea">
+          <label for="name" class="col-sm-3 control-label">Mensaje</label>
+          <div class="col-sm-9">
+            <textarea class="form-control" id="mensaje" rows="4" name="mensaje" placeholder="Escriba su mensaje..."></textarea>
+          </div>
+        </div><!-- end form-group -->
+
+        <button class="btn btn-large btn-primary contact-submit pull-right" type="submit" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Espere....">Enviar Mensaje</button>
+
+      </div><!-- /row -->
+    </form>
+  </div><!-- /contact-form -->
+  <!-- ////////// END CONTACT FORM -->
+</div><!-- /col-sm-6 --> 
+
+
+</div><!-- /row -->
+
+</div><!-- /container -->
+
+
+
+</section>
+{% endblock %}
+{% block javascript1 %}
+{{ parent()}}
+<script type="text/javascript" src="{{constant('ROOT')}}js/jquery/jquery.validate.min.js"></script>
+<script type="text/javascript">
+$("#ajax-contact-form").validate({
+rules : {
+nombre : {
+required : true
+},
+email : {
+required : true,
+email : true
+},
+mensaje : {
+    required : true
+}
+},
+messages : {
+nombre : {
+required : 'Ingrese su nombre y apellido'
+},
+email : {
+required : 'Ingrese su correo electrónico',
+email : 'Ingrese un correo electrónico válido'
+},
+mensaje : {
+    required : 'Escriba un mensaje'
+}
+},
+submitHandler: function(form) {
+    $.ajax({
+        type: 'POST',
+        url: 'php/mailer.php',
+        dataType: 'json',
+        data: $(form).serialize(),
+        beforeSend: function() {
+            $("#ajax-contact-form").find("button").button('loading');
+            $("#form-messages").removeClass('alert alert-danger');
+        }
+    })
+    .done(function(response) {
+        if (response.suceed) {
+            $("#form-messages").removeClass('alert alert-danger');
+            $("#form-messages").addClass('alert alert-success');
+            $('#ajax-contact-form')[0].reset();
+        } else {
+            $("#form-messages").removeClass('alert alert-success');
+            $("#form-messages").addClass('alert alert-danger');
+        }
+        $("#form-messages").text(response.mensaje);
+    })
+    .fail(function(data) {
+        $("#form-messages").removeClass('alert alert-success');
+        $("#form-messages").addClass('alert alert-danger');
+        $("#form-messages").text(data.mensaje);
+        $("#ajax-contact-form").find("button").button('reset');
+    })
+    .complete(function() {
+        $("#ajax-contact-form").find("button").button('reset');
+    });
+},
+errorPlacement : function(error, element) {
+error.insertAfter(element);
+}
+});
+</script>
+{% endblock %}

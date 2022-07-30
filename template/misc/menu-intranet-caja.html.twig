@@ -1,0 +1,66 @@
+<aside id="left-panel">
+
+<!-- User info -->
+<div class="login-info">
+<span> <!-- User image size is adjusted inside CSS, it should stay as is --> 
+
+<a data-action="toggleShortcut" id="show-shortcut" href="javascript:void(0);">
+<img class="online" alt="me" src="{{ constant('ROOT') }}assets/images/avatars/male.png"> 
+<span>
+{{ session.usuario.nombre_completo }}
+</span>
+<i class="fa fa-angle-down"></i>
+</a> 
+
+</span>
+</div>
+<!-- end user info -->
+
+<!-- NAVIGATION : This navigation is also responsive
+
+To make this navigation dynamic please make sure to link the node
+(the reference to the nav > ul) after page load. Or the navigation
+will not initialize.
+-->
+<nav>
+<!-- 
+NOTE: Notice the gaps after each icon usage <i></i>..
+Please note that these links work a bit different than
+traditional href="" links. See documentation for details.
+-->
+
+<ul style="">
+<li class="active">
+<a title="Cartelera" href="caja/?accion=cartelera">
+<i class="et-rss"></i><span class="menu-item-parent">Cartelera</span></a>
+</li>
+<li>
+<a title="Estado de Cuenta" href="inmueble/?accion=cuenta">
+<i class="et-browser"><em class="flash animated">!</em></i><span class="menu-item-parent">Edo. de Cta. Condominio</span></a>
+</li>
+<li>
+<a title="Cobranza" href="caja/?accion=cobranza">
+<i class="et-wallet"></i><span class="menu-item-parent">Cobranza Condominio</span></a>
+</li>
+<li>
+<a title="Reporte Transacciones" href="caja/?accion=reporte">
+<i class="et-clipboard"></i><span class="menu-item-parent">Reporte Transacciones</span></a>
+</li>
+<li>
+<a href="propietario/?accion=ficha"><i class="et-profile-male"></i> <span class="menu-item-parent">Ficha del propietario</span></a>
+</li>
+<li>
+<a href="caja/?accion=historico"><i class="et-linegraph"></i> <span class="menu-item-parent">Histórico Pagos</span></a>
+</li>
+<li>
+    <a title="Correo electrónico" href="https://a2plcpnl0550.prod.iad2.secureserver.net:2096/webmail/gl_paper_lantern/index.html?mailclient=horde" target="_blank">
+<i class="et-envelope"></i><span class="menu-item-parent">Correo Eléctronico</span></a>
+</li>
+<li>
+    <a target="parent" href="usuario/?logout_intra=true" title="Cerrar Sesión" data-action="userLogout" data-logout-msg="">
+        <i class="et-streetsign"></i> <span class="menu-item-parent">Cerrar Sesión</span></a>
+</li>
+</ul>
+</nav>
+<span data-action="minifyMenu" class="minifyme"> <i class="fa fa-arrow-circle-left hit"></i> </span>
+</aside>

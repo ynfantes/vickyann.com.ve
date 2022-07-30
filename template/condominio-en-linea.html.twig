@@ -1,0 +1,80 @@
+{% extends 'layout/base.html.twig'%}
+{% block contenido %}
+<div class="page-title-container">
+<div class="container">
+<div class="col-md-12">
+<p class="page-title animated bounceInDown">Condominio en línea</p>
+</div>
+</div>
+</div>
+<section>
+<div class="container">
+<div class="divied-40"></div>
+<div class="row">
+
+<!-- LEFT TEXT -->
+<div class="col-md-5 col-md-offset-1">
+
+<h2 class="size-16">Vick & Ann en línea</h2>
+<p class="text-muted"><strong>Administradora Vicky & Ann</strong>, siempre en la búsqueda de ofrecer un servicio óptimo, pone a su disposición
+    este canal de comunicación. Para que usted pueda efectuar consultas y operaciones sobre su cuenta de condominio en cualquier
+momento, con tranquilidad y comodidad.</p>
+<p class="text-muted">Si aún no tiene sus credenciales de acceso <a href="{{constant('ROOT')}}recuperar-password.html">solicítela ya</a>.</p>
+
+</div>
+<!-- /LEFT TEXT -->
+
+<!-- LOGIN -->
+
+<div class="col-md-4">
+
+<div id="alert_pass" class="alert alert-danger margin-bottom-30">
+<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+<strong>Ups!</strong> ha ingresado un password incorrecto!
+</div>
+
+<div id="alert_apto" class="alert alert-danger margin-bottom-30">
+<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+<strong>Ups!</strong> ha ingresado un código de Apartamento/Casa/Local incorrecto!
+</div>
+
+<div id="alert_mandatory" class="alert alert-danger margin-bottom-30">
+<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+<strong>Lo sentimos!</strong> Usted necesita completar los campos requeridos (*)!
+</div>
+<h2 class="size-16">LOGIN</h2>
+<form autocomplete="off" action="php/login.php" method="post">
+<div class="clearfix">
+
+<div class="form-group">
+<input type="text" required="" placeholder="Codigo Apartamento / Casa / Local" class="form-control" name="apto">
+</div>
+
+<div class="form-group">
+<input type="password" required="" placeholder="Password" class="form-control" name="password">
+</div>
+</div>
+<div class="row">
+<div class="col-md-6 col-sm-6 col-xs-6">
+                                       
+<div class="form-tip pt-20">
+    <a href="{{constant('ROOT')}}recuperar-password.html" class="no-text-decoration size-13 margin-top-10 block">¿Olvidó su password?</a>
+</div>
+</div>
+<div class="col-md-6 col-sm-6 col-xs-6 text-right">
+<button class="btn btn-primary">OK, ENTRAR</button>
+</div>
+</div>
+</form>
+
+<div id="resultado" class="alert alert-mini margin-bottom-30">
+</div>
+</div>
+</div>
+</div>
+</section>
+{% endblock %}
+{% block javascript1 %}
+{{ parent()}}
+<script type="text/javascript" src="{{constant('ROOT')}}assets/js/login.js"></script>
+{% endblock %}
