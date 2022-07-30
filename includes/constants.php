@@ -10,7 +10,7 @@ $email_error = false;
 $mostrar_error = true;
 $programa_correo = mailPHP;
 
-if ($_SERVER['SERVER_NAME'] == "www.administradora-vikyann.com.ve" | $_SERVER['SERVER_NAME'] == "www.administradora-vickyann.com.ve" ) {
+if ($_SERVER['SERVER_NAME'] == "www.administradora-vickyann.com.ve" | $_SERVER['SERVER_NAME'] == "administradora-vickyann.com.ve" ) {
     $user = "";
     $password = "";
     $db = "";
@@ -83,11 +83,10 @@ define("ARCHIVO_CUENTAS_DE_FONDO","CUENTAS_FONDO.txt");
 define("ARCHIVO_MOVIMIENTOS_DE_FONDO","MOVIMIENTO_FONDO.txt");
 define("ARCHIVO_ACTUALIZACION","ACTUALIZACION.txt");
 define("ARCHIVO_MOVIMIENTO_CAJA","MOVIMIENTO_CAJA.txt");
-define("SMTP_SERVER","mail.administradora-vickyann.com.ve");
+define("SMTP_SERVER","");
 define("PORT",25);
-define("USER_MAIL","info@administradora-vickyann.com.ve");
-define("MAIL_CAJERO_WEB","intranet@grupoveneto.com");
-define("PASS_MAIL","vickyann5231");
+define("USER_MAIL","");
+define("PASS_MAIL","");
 define("MESES_COBRANZA",1000);
 define("GRAFICO_FACTURACION",1);
 define("GRAFICO_COBRANZA",1);
