@@ -1,5 +1,5 @@
 /.vscode
-#/includes/constants.php
+/includes/constants.php
 /data/*.txt
 /cancelacion.gastos/*.pdf
 /enlinea/avisos/*.pdf
