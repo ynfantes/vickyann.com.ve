@@ -390,7 +390,7 @@ if (GRAFICO_COBRANZA == 1) {
 $fecha = JFILE::read(ACTUALIZ."ACTUALIZACION.txt");
 echo "****FIN DEL PROCESO DE ACTUALIZACION****<br />";
 echo "Información actualizada al: ".$fecha."<br/>";
-$mail = new mailto(SMTP);
+$mail = new mailto();
 $r = $mail->enviar_email("Actualización Vicky & Ann en Línea ".$fecha,$mensaje, "", 'vickann26@gmail.com ',"");
         
 if ($r=="") {
