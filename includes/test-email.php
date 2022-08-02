@@ -2,7 +2,7 @@
 include './constants.php';
 include 'mailto.php';
 // se envia el email de confirmación
-$mail = new mailto(SMTP);
+$mail = new mailto();
 
 $propietario = "edgar";
 $forma_pago = 'DEPOSITO';
