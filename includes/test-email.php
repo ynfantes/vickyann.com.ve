@@ -3,7 +3,7 @@ include './constants.php';
 include 'mailto.php';
 // se envia el email de confirmación
 $ini = parse_ini_file('emails.ini');
-$mail = new mailto();
+$mail = new mailto(SMTP);
 
 $propietario = "edgar";
 $forma_pago = 'DEPOSITO';
