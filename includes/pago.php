@@ -382,10 +382,10 @@ class pago extends db implements crud {
                         }
                         //$adjunto.= $con . $factura;
                     }
-                    $mensaje.= "Hemos adjuntado " . $n . " factura(s).";
-                    if ($n < count($r['data'])) {
-                        $mensaje . -"<br>Falta(ron) factura(s) por adjuntar.";
-                    }
+                    // $mensaje.= "Hemos adjuntado " . strval($n) . " factura(s).";
+                    // if ($n < count($r['data'])) {
+                    //     $mensaje . -"<br>Falta(ron) factura(s) por adjuntar.";
+                    // }
                 }
             }
         }// </editor-fold>
