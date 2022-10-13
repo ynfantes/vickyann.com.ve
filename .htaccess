@@ -1,8 +1,8 @@
 Header add Access-Control-Allow-Origin "*"
 AddCharset utf-8 .html
 Options +FollowSymLinks
-RewriteEngine on
-
+RewriteEngine On
+RewriteCond %{HTTPS} on
 RewriteCond %{HTTP_HOST} ^administradora-vickyann.com.ve
 RewriteRule (.*) http://www.administradora-vickyann.com.ve/$1 [R=301,L]
 
